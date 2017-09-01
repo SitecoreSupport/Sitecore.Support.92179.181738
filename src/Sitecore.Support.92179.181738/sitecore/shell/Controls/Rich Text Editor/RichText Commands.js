@@ -143,14 +143,13 @@ Telerik.Web.UI.Editor.CommandList["ImageMapDialog"] = function (commandName, edi
 // ------------------ Sitecore Support fix #181738-----------------------------
 function getURLField(iframes, elementId) {
     var linkElement;
-    var iframeElement;
     if (iframes != null) {
         for (i = 0; i < iframes.length; i++) {
             if (iframes[i].contentWindow.document.getElementById(elementId) != null) {
                 return iframes[i].contentWindow.document.getElementById(elementId);
             }
 
-            linkElement = getURLField(iframes[i].contentWindow.document.getElementsByTagName("iframe"));
+            linkElement = getURLField(iframes[i].contentWindow.document.getElementsByTagName("iframe"), elementId);
         }
         return linkElement;
     }
